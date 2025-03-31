@@ -1,6 +1,9 @@
 - name: config backend
   hosts: backend
   become: yes
+  vars:
+    r_pw: ExpenseApp@1
+
   tasks:
 
   - name: disable current node js
@@ -45,3 +48,12 @@
     ansible.builtin.copy:
       src: be.service
       dest: /etc/systemd/system/backend.service
+
+  - name: import mysql data
+    community.mysql.mysql_db:
+      state: import
+      name: all
+      login_user: root
+      login_password: "{{ r_pw }}"
+      login_host: mysql.katta.blog
+      target: /app/schema/backend.sql
