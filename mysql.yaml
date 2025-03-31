@@ -2,7 +2,7 @@
   hosts: mysql
   become: yes
   vars:
-  r_pw: ExpenseApp@1
+   r_pw: ExpenseApp@1
     
   tasks:
   - name: install pip libs
