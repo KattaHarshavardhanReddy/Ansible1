@@ -22,3 +22,14 @@
     ansible.builtin.file:
       path: /app
       state: directory
+
+  - name: download the file
+    ansible.builtin.get_url:
+      url: https://github.com/KattaHarshavardhanReddy/Ansible1.git
+      dest: /tmp/backend.zip
+
+  - name: unzip the file
+    ansible.builtin.unarchive:
+      src: /tmp/backend.zip
+      dest: /app
+      remote_src: yes
