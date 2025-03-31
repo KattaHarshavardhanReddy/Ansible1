@@ -1,9 +1,9 @@
 - name: config mysql - server
   hosts: mysql
   become: yes
-  vars_prompt:
-  - name: r_pw
-    prompt: please enter pw
+  vars:
+    r_pw=ExpenseApp@1
+    
   tasks:
   - name: install pip libs
     ansible.builtin.pip:
